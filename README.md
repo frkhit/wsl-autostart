@@ -26,26 +26,8 @@ git clone https://github.com/troytse/wsl-autostart
 
 ## Usage
 
-* Modify `/etc/sudoers` file in the WSL to specify the service commands calling on startup without a password.
-e.g:
-``` sudoers
-%sudo ALL=NOPASSWD: /etc/init.d/cron
-%sudo ALL=NOPASSWD: /etc/init.d/ssh
-%sudo ALL=NOPASSWD: /etc/init.d/mysql
-%sudo ALL=NOPASSWD: /etc/init.d/apache2
-```
-* Modify `commands.txt` file to specify the service commands for your need.
-e.g:
-``` shell
-/etc/init.d/cron
-/etc/init.d/ssh
-/etc/init.d/mysql
-/etc/init.d/apache2
-```
+* `start.vbs` only exec `~/init.sh` in WSL.
 
-## Other methods
-* Using `gpedit.msc`, it is possible to define a program that runs when the computer starts
-  > Note that the configured program will run as the system user.
-* Using `taskschd.msc`, it is possible to schedule a task after the startup of the computer.
-  > You may configure which user will run the program, a delay before a run and a number of retries.
-the same `taskschd.msc` program will show a specific log regarding the execution of the task
+* copy init.sh to ~/ of WSL
+
+* echo yourpassword > ~/.safe/pwd.conf

@@ -31,6 +31,6 @@ goto lxssDetect
 
     REM Start services in the WSL
     REM Define the service commands in commands.txt.
-    for /f %%i in (%~dp0commands.txt) do (wsl sudo %%i %*)
+    wsl ~/init.sh
 
 :end

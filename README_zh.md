@@ -25,20 +25,11 @@ git clone https://github.com/troytse/wsl-autostart
 ![regedit-set-path](doc/regedit-set-path.png)
 
 ## 使用
+* `start.vbs` 仅在WSL中执行`~/init.sh`命令, 需要在`~/init.sh`中提升权限并执行所有初始任务
 
-* 修改在WSL中`/etc/sudoers`文件,为需要自启动的服务指定为免密码.
-如:
-``` sudoers
-%sudo ALL=NOPASSWD: /etc/init.d/cron
-%sudo ALL=NOPASSWD: /etc/init.d/ssh
-%sudo ALL=NOPASSWD: /etc/init.d/mysql
-%sudo ALL=NOPASSWD: /etc/init.d/apache2
+* 参考项目中的`init.sh`文件,在WSL中`~/`下创建`init.sh`文件,并赋予执行权限:`chmod +x init.sh`
+
+* 需要程序自动输入用户密码提权. 可自主设置密码存放位置, 测试提权是否成功
 ```
-* 修改`commands.txt`文件指定需要自启动的服务.
-如:
-``` shell
-/etc/init.d/cron
-/etc/init.d/ssh
-/etc/init.d/mysql
-/etc/init.d/apache2
+cat ~/your/password/file | sudo -S cat /etc/hosts | wc -l
 ```
